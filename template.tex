@@ -1,0 +1,236 @@
+% This is the Reed College LaTeX thesis template. Most of the work
+% for the document class was done by Sam Noble (SN), as well as this
+% template. Later comments etc. by Ben Salzberg (BTS). Additional
+% restructuring and APA support by Jess Youngberg (JY).
+% Your comments and suggestions are more than welcome; please email
+% them to cus@reed.edu
+%
+% See https://www.reed.edu/cis/help/LaTeX/index.html for help. There are a
+% great bunch of help pages there, with notes on
+% getting started, bibtex, etc. Go there and read it if you're not
+% already familiar with LaTeX.
+%
+% Any line that starts with a percent symbol is a comment.
+% They won't show up in the document, and are useful for notes
+% to yourself and explaining commands.
+% Commenting also removes a line from the document;
+% very handy for troubleshooting problems. -BTS
+
+% As far as I know, this follows the requirements laid out in
+% the 2002-2003 Senior Handbook. Ask a librarian to check the
+% document before binding. -SN
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Preamble %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[12pt,oneside]{ucrthesis}
+\usepackage{graphicx,latexsym}
+\usepackage{amsmath}
+\usepackage{amssymb,amsthm}
+\usepackage{longtable,booktabs,setspace}
+\usepackage{setspace} \doublespacing
+\usepackage[hyphens]{url}
+\usepackage[hidelinks]{hyperref}
+\usepackage{lmodern}
+\usepackage{float}
+\usepackage{lipsum}
+\floatplacement{figure}{H}
+\usepackage{calc}
+\usepackage{rotating}
+\usepackage{biblatex}
+\setlength\bibitemsep{\baselineskip} % Creates one line of space between entries
+\usepackage{lscape}
+
+
+\renewcommand{\hyperref}[2][???]{\autoref{#1}}
+\def\chapterautorefname{Chapter}
+\def\sectionautorefname{Section}
+\def\subsectionautorefname{Subsection}
+
+\usepackage{caption}
+\captionsetup{width=5in}
+
+\usepackage{palatino} % other fonts are available like times, bookman, charter, palatino
+
+$if(highlighting-macros)$
+  $highlighting-macros$
+$endif$
+
+%% Siunitx for common and custom SI units
+\usepackage{siunitx}
+\DeclareSIUnit\molar{\mole\per\cubic\deci\metre}
+\DeclareSIUnit\Molar{\textsc{M}}
+\DeclareSIUnit\nt{\textsc{nt}}
+\DeclareSIUnit\units{\textsc{U}}
+
+\newcommand{\beginsupplement}{%
+        \setcounter{table}{0}
+        \renewcommand{\thetable}{S\arabic{table}}%
+        \setcounter{figure}{0}
+        \renewcommand{\thefigure}{S\arabic{figure}}%
+     }
+
+% To pass between YAML and LaTeX the dollar signs are added by CII
+\title{$title$}
+\author{$author$}
+\date{$date$}
+\division{$division$}
+\advisor{$advisor$}
+\institution{$institution$}
+\degree{$degree$}
+\department{$department$}
+$if(altadvisor)$
+\altadvisor{$altadvisor$}
+$endif$
+\degreemonth{$degreemonth$}
+\degreeyear{$degreeyear$}
+\degreesemester{$degreesemester$}
+\othermembertwo{$othermembertwo$}
+\othermemberthree{$othermemberthree$}
+\campus{$campus$}
+\doctype{$doctype$}
+
+%%% Copied from knitr
+%% maxwidth is the original width if it's less than linewidth
+%% otherwise use linewidth (to make sure the graphics do not exceed the margin)
+\makeatletter
+\def\maxwidth{ %
+  \ifdim\Gin@nat@width>\linewidth
+    \linewidth
+  \else
+    \Gin@nat@width
+  \fi
+}
+\makeatother
+
+% From {rticles}
+$if(csl-refs)$
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+% for Pandoc 2.8 to 2.10.1
+\newenvironment{cslreferences}%
+  {$if(csl-hanging-indent)$\setlength{\parindent}{0pt}%
+  \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces$endif$}%
+  {\par}
+% For Pandoc 2.11+
+% As noted by @mirh [2] is needed instead of [3] for 2.12
+\newenvironment{CSLReferences}[2] % #1 hanging-ident, #2 entry spacing
+ {% don't indent paragraphs
+  \setlength{\parindent}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1 \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces\fi
+  % set entry spacing
+  \ifnum #2 > 0
+  \setlength{\parskip}{#2\baselineskip}
+  \fi
+ }%
+ {}
+\usepackage{calc} % for calculating minipage widths
+\newcommand{\CSLBlock}[1]{#1\hfill\break}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{#1}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+$endif$
+
+\renewcommand{\contentsname}{Table of Contents}
+% End of CII addition
+
+\setlength{\parskip}{0pt}
+
+% Added by CII
+$if(space_between_paragraphs)$
+  %\setlength{\parskip}{\baselineskip}
+  \usepackage[parfill]{parskip}
+$endif$
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+\Acknowledgements{$acknowledgements$}
+
+\Dedication{$dedication$}
+
+\Abstract{$abstract$}
+
+$for(header-includes)$
+	$header-includes$
+$endfor$
+% End of CII addition
+%%
+%% End Preamble
+%%
+%
+
+\begin{document}
+
+\maketitle
+
+\frontmatter
+% \pagestyle{empty}
+
+\begin{acknowledgements}
+  $acknowledgements$
+\end{acknowledgements}
+
+\begin{dedication}
+  \begin{center}
+    \null\vfil
+    $dedication$
+    \null\vfil
+  \end{center}
+\end{dedication}
+
+
+\begin{abstract}
+  \begin{center}
+  \begin{singlespace}
+    ABSTRACT OF THE \expandafter\uppercase\expandafter{$doctype$}\par
+    \vspace{.5in}
+    $title$\par
+    \vspace{.25in}
+    by\par
+    \vspace{.25in}
+    $author$\par
+    \vspace{.25in}
+    $degree$, Graduate Program in $department$\par
+    University of California, $campus$, $degreemonth$ $degreeyear$\par
+    $advisor$, Chairperson\par
+    \vspace{.25in}
+  \end{singlespace}
+  \end{center}
+      $abstract$
+\end{abstract}
+
+
+\hypersetup{linkcolor=$if(toccolor)$$toccolor$$else$black$endif$}
+\setcounter{secnumdepth}{$toc-depth$}
+\setcounter{tocdepth}{$toc-depth$}
+
+% \begin{singlespace}
+\tableofcontents
+
+\cleardoublepage
+% \phantomsection
+\addcontentsline{toc}{chapter}{\listfigurename}
+\listoffigures
+
+\cleardoublepage
+% \phantomsection
+\addcontentsline{toc}{chapter}{\listtablename}
+\listoftables
+% \end{singlespace}
+
+
+\mainmatter % here the regular arabic numbering starts
+\pagestyle{fancyplain} % turns page numbering back on
+
+$body$
+
+
+% Index?
+
+\end{document}
+

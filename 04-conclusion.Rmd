@@ -1,0 +1,7 @@
+<!-- The {-} tag is an unnumbered chapter (it won't say chapter #: title) -->
+# Conclusion {-}
+<!-- Keep the markright command so that it is labeled correctly in the header -->
+\markright{Conclusion} 
+ 
+\lipsum
+

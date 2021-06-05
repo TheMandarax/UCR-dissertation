@@ -1,0 +1,23 @@
+<!-- The {#tag} is used for crossreferencing in your document -->
+<!-- One hash tag is a chapter, two is a subsection, three is a subsubsection! -->
+# Chapter 1 title {#chapter1-tag}
+
+\lipsum
+
+## Introduction
+
+\lipsum
+
+## Materials and Methods
+
+\lipsum
+
+## Results
+
+\lipsum
+
+## Discussion
+
+\lipsum
+
+

@@ -1,0 +1,16 @@
+\backmatter
+\singlespace
+\setlength{\parindent}{-0.20in}
+\setlength{\leftskip}{0.20in}
+\setlength{\parskip}{8pt}
+# References {-}
+\markboth{References}{References}
+<div id="refs"></div>
+\noindent
+
+<!-- This is a section where you can include citations that you didn't reference -->
+<!-- in the text -->
+---
+nocite: | 
+  @troy_alva-mc
+...

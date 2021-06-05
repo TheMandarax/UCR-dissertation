@@ -1,0 +1,85 @@
+---
+title: 'This is my title'
+author: 'Troy R. Alva'
+doctype: "Dissertation"
+
+date: 'Month Year'
+degreemonth: 'Month'
+degreeyear: 'year'
+degreesemester: 'quarter'
+
+division: 'Bourns College of Engineering'
+institution: 'University of California'
+campus: 'Riverside'
+
+# Graduation degree goes here
+degree: 'Doctor of Philosophy'
+department: 'Major'
+
+advisor: 'Dr. PI'
+othermembertwo: 'Dr. Committee 1'
+othermemberthree: 'Dr. Committee 2'
+  
+output:
+  thesisdown::thesis_pdf: default 
+#  thesisdown::thesis_gitbook: default         
+#  thesisdown::thesis_word: default
+#  thesisdown::thesis_epub: default
+knit: bookdown::render_book
+site: bookdown::bookdown_site
+params:
+  'Install needed packages for {thesisdown}': True
+header-includes:
+- \usepackage[width=\textwidth]{caption}
+- \captionsetup[figure]{font=footnotesize}
+- \captionsetup[table]{font=footnotesize}
+- \newcommand{\blandscape}{\begin{landscape}} # Surround  figure with these
+- \newcommand{\elandscape}{\end{landscape}}   # commands to make landscape
+bibliography: bib/dissertation.bib
+csl: csl/elsevier-harvard.csl
+
+abstract: '`r if(knitr:::is_latex_output()) paste(readLines(here::here("prelims", "00-abstract.Rmd")), collapse = "\n  ")`'
+acknowledgements: '`r if(knitr:::is_latex_output()) paste(readLines(here::here("prelims", "00-acknowledgements.Rmd")), collapse = "\n  ")`'
+dedication: '`r if(knitr:::is_latex_output()) paste(readLines(here::here("prelims", "00-dedication.Rmd")), collapse = "\n  ")`'
+---
+
+```{r initializer, message=FALSE, warning=FALSE, include=FALSE}
+# This chunk ensures that the thesisdown package is
+# installed and loaded. This thesisdown package includes
+# the template files for the thesis.
+if (!require(remotes)) {
+  if (params$`Install needed packages for {thesisdown}`) {
+    install.packages("remotes", repos = "https://cran.rstudio.com")
+  } else {
+    stop(
+      paste('You need to run install.packages("remotes")",
+            "first in the Console.')
+    )
+  }
+}
+if (!require(thesisdown)) {
+  if (params$`Install needed packages for {thesisdown}`) {
+    remotes::install_github("ismayc/thesisdown")
+  } else {
+    stop(
+      paste(
+        "You need to run",
+        'remotes::install_github("ismayc/thesisdown")',
+        "first in the Console."
+      )
+    )
+  }
+}
+library(thesisdown)
+# Set how wide the R output will go
+options(width = 70)
+```
+
+# Introduction {-}
+\markright{Introduction}
+
+This is how you cite a reference in dissertation.bib. 
+Let's cite Troy R. Alva, [@Alva2021-qo]
+
+\lipsum
+

@@ -1,0 +1,30 @@
+# Chapter 3 title {#chapter3-tag}
+
+\lipsum
+
+## Introduction
+
+\lipsum
+
+## Materials and Methods
+
+\lipsum
+
+## Results
+
+\lipsum
+
+<!-- We can embed regular figures too -->
+(ref:long-scatter) **Example caption for figure**
+***a*** Describes plot subsection.
+***b*** Describes plot subsection.
+***c*** Describes plot subsection.
+(ref:short-scatter) This is a short caption for list of figures
+
+```{r scatter, fig.cap="(ref:long-scatter)", fig.scap="(ref:short-scatter)", echo=FALSE, message=FALSE, warning=FALSE, fig.env="figure", fig.align="center", fig.pos="h", out.width='100%'}
+plot(pressure)
+```
+
+## Discussion
+
+\lipsum

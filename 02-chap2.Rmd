@@ -1,0 +1,35 @@
+# Chapter 2 title {#chapter2-tag}
+
+\lipsum
+
+## Introduction
+
+\lipsum
+
+## Materials and Methods
+
+\lipsum
+
+## Results
+
+\lipsum
+
+<!-- If you want to go into landscape mode for big figures, encapsulate your code -->
+<!-- using \blandscape and \elandscape -->
+\blandscape
+(ref:long-metrics) **Example caption for figure**
+***a*** Describes plot subsection.
+***b*** Describes plot subsection.
+***c*** Describes plot subsection.
+(ref:short-metrics) This is a short caption for list of figures
+
+```{r metrics, fig.cap="(ref:long-metrics)", fig.scap="(ref:short-metrics)", echo=FALSE, message=FALSE, warning=FALSE, fig.env="figure", fig.align="center", fig.pos="h", out.width='100%'}
+
+knitr::include_graphics(path = "images/expression_metrics.png")
+
+```
+\elandscape
+
+## Discussion
+
+\lipsum
